@@ -1,11 +1,13 @@
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import Header from "./components/Header";
 import Homepage from "./pages/Homepage";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ShopPage from "./pages/ShopPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Homepage />
@@ -15,7 +17,7 @@ function App() {
           <ShopPage />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 
