@@ -20,10 +20,12 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     justify-content: flex-end;
 
-    a {
+    a,
+    div {
       padding: 10px 15px;
       display: flex;
       align-items: center;
+      cursor: pointer;
     }
   }
 `;
