@@ -2,19 +2,18 @@ import styled from "styled-components";
 
 export const FormInputWrapper = styled.div`
   position: relative;
-  margin: 45px 0;
+  margin: 30px 0;
 
   input {
     background: none;
     background-color: #fff;
     color: grey;
     font-size: 18px;
-    display: block;
     width: 100%;
     border: none;
     border-radius: 0;
     border-bottom: 1px solid grey;
-    margin: 25px 0;
+    margin: 10px 0 25px;
 
     &:focus {
       outline: none;
@@ -37,7 +36,7 @@ export const FormInputWrapper = styled.div`
     font-weight: normal;
     position: absolute;
     pointer-events: none;
-    left: 5px;
+    left: 10px;
     top: 10px;
     transition: 300ms ease all;
 

@@ -4,7 +4,7 @@ import { StyledButton } from "./CustomButton.styles";
 const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => {
   return (
     <StyledButton
-      className={`${isGoogleSignIn && "google-sign-in"}`}
+      className={`${isGoogleSignIn ? "google-sign-in" : ""}`}
       {...otherProps}
     >
       {children}

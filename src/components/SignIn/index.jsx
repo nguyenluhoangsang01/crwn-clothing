@@ -12,8 +12,13 @@ const SignIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setValues({ email: "", password: "" });
+
+    setValues({
+      email: "",
+      password: "",
+    });
   };
+
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
 
@@ -46,6 +51,7 @@ const SignIn = () => {
           handleChange={handleChange}
           label="Password"
         />
+
         <div>
           <CustomButton type="submit">Sign in</CustomButton>
           <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
