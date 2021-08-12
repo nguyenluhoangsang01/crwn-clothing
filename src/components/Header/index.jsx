@@ -5,8 +5,6 @@ import { auth } from "../../firebase/firebase.utils";
 import { HeaderWrapper } from "./Header.styles";
 
 const Header = ({ currentUser }) => {
-  console.log(currentUser);
-
   return (
     <HeaderWrapper>
       <Link to="/">
@@ -17,7 +15,7 @@ const Header = ({ currentUser }) => {
         <Link to="/shop">SHOP</Link>
         <Link to="/contact">CONTACT</Link>
         {currentUser ? (
-          <div onClick={() => auth.signOut()}>SIGN OUT</div>
+          <span onClick={() => auth.signOut()}>SIGN OUT</span>
         ) : (
           <Link to="/sign-in">SIGN IN</Link>
         )}

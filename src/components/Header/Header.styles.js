@@ -7,9 +7,9 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
   margin-bottom: 25px;
 
+  span,
   a {
     height: 100%;
-    width: 70px;
     padding: 25px;
   }
 
@@ -20,8 +20,8 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     justify-content: flex-end;
 
-    a,
-    div {
+    span,
+    a {
       padding: 10px 15px;
       display: flex;
       align-items: center;
