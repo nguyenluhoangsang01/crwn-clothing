@@ -2,16 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { auth } from "../../firebase/firebase.utils";
-import { HeaderWrapper } from "./Header.styles";
+import { HeaderWrapper, MenuIcon, Options } from "./Header.styles";
 
 const Header = ({ currentUser }) => {
   return (
     <HeaderWrapper>
-      <Link to="/">
+      <Link to="/" className="logo">
         <Logo />
       </Link>
 
-      <div>
+      <MenuIcon />
+
+      <Options>
         <Link to="/shop">SHOP</Link>
         <Link to="/contact">CONTACT</Link>
         {currentUser ? (
@@ -19,7 +21,7 @@ const Header = ({ currentUser }) => {
         ) : (
           <Link to="/sign-in">SIGN IN</Link>
         )}
-      </div>
+      </Options>
     </HeaderWrapper>
   );
 };
