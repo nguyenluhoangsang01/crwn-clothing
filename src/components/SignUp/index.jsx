@@ -84,7 +84,7 @@ const SignUp = () => {
           value={values.confirmPassword}
           required
           handleChange={handleChange}
-          label="Confirm password"
+          label="Confirm Password"
         />
 
         <CustomButton type="submit">Sign up</CustomButton>

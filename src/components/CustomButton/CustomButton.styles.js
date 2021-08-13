@@ -30,4 +30,8 @@ export const StyledButton = styled.button`
     color: #000;
     border: 1px solid #000;
   }
+
+  @media screen and (max-width: 375px) {
+    width: 50%;
+  }
 `;
