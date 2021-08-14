@@ -15,9 +15,13 @@ export const CartDropDownWrapper = styled.div`
   z-index: 5;
 `;
 
-export const CartItem = styled.div`
+export const CartItemWrapper = styled.div`
   height: 240px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
