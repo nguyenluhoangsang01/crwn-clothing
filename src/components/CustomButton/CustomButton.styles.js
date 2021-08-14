@@ -14,6 +14,8 @@ export const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   transition: all 0.15s ease-in;
+  display: flex;
+  justify-content: center;
 
   &.google-sign-in {
     background-color: #4285f4;
@@ -29,6 +31,18 @@ export const StyledButton = styled.button`
     background-color: #fff;
     color: #000;
     border: 1px solid #000;
+  }
+
+  &.inverted {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      border: none;
+    }
   }
 
   @media screen and (max-width: 375px) {

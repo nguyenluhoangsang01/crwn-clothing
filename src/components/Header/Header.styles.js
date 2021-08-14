@@ -7,6 +7,7 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
+  position: relative;
 
   .logo {
     display: flex;

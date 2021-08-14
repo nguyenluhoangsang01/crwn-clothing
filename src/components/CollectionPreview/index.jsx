@@ -2,7 +2,7 @@ import React from "react";
 import CollectionItem from "../CollectionItem";
 import { CollectionPreviewWrapper } from "./CollectionPreview.styles";
 
-const CollectionPreview = ({ title, routeName, items }) => {
+const CollectionPreview = ({ title, items }) => {
   return (
     <CollectionPreviewWrapper>
       <h2>{title.toUpperCase()}</h2>
@@ -10,12 +10,7 @@ const CollectionPreview = ({ title, routeName, items }) => {
         {items
           .filter((item, idx) => idx < 4)
           .map((item) => (
-            <CollectionItem
-              key={item.id}
-              name={item.name}
-              imageUrl={item.imageUrl}
-              price={item.price}
-            />
+            <CollectionItem key={item.id} item={item} />
           ))}
       </div>
     </CollectionPreviewWrapper>

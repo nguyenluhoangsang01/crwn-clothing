@@ -6,6 +6,7 @@ export const CollectionItemWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   height: 350px;
+  position: relative;
 
   .bgc {
     width: 100%;
@@ -15,6 +16,26 @@ export const CollectionItemWrapper = styled.div`
     background-position: cover;
     margin-bottom: 5px;
     border-radius: 2.5px;
+    transition: all 0.15s ease-in;
+  }
+
+  .custom-button {
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 255px;
+    display: none;
+  }
+
+  &:hover {
+    .bgc {
+      opacity: 0.8;
+    }
+
+    .custom-button {
+      display: flex;
+      opacity: 0.85;
+    }
   }
 `;
 
