@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -8,8 +8,11 @@ import Homepage from "./pages/Homepage";
 import ShopPage from "./pages/ShopPage";
 import SignInAndSignUpPage from "./pages/SignInAndSignUpPage";
 import { setCurrentUser } from "./redux/users/users.actions";
+import { selectCurrentUser } from "./redux/users/users.selectors";
 
-function App({ currentUser, setCurrentUser }) {
+function App({ setCurrentUser }) {
+  const currentUser = useSelector((state) => selectCurrentUser(state));
+
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -48,11 +51,8 @@ function App({ currentUser, setCurrentUser }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: state.users.currentUser,
-});
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
