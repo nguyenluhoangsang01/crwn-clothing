@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import CheckoutPage from "./pages/CheckoutPage";
 import Homepage from "./pages/Homepage";
 import ShopPage from "./pages/ShopPage";
 import SignInAndSignUpPage from "./pages/SignInAndSignUpPage";
@@ -41,6 +42,10 @@ function App({ setCurrentUser }) {
 
         <Route path="/shop">
           <ShopPage />
+        </Route>
+
+        <Route path="/checkout">
+          <CheckoutPage />
         </Route>
 
         <Route path="/sign-in">

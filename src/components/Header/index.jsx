@@ -35,7 +35,9 @@ const Header = () => {
         <CartIcon onClickCartIcon={handleClickCartIcon} />
       </Options>
 
-      {isToggleCartDropDown && <CartDropDown />}
+      {isToggleCartDropDown && (
+        <CartDropDown onClickCustom={handleClickCartIcon} />
+      )}
     </HeaderWrapper>
   );
 };

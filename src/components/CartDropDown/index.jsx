@@ -1,18 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
-  selectCartItem,
   selectCartItemQuantity,
+  selectCartItems,
 } from "../../redux/cart/cart.selectors";
 import CartItem from "../CartItem";
 import CustomButton from "../CustomButton";
 import { CartDropDownWrapper, CartItemWrapper } from "./Cart.styles";
 
-const CartDropDown = () => {
-  const cartItems = useSelector((state) => selectCartItem(state));
+const CartDropDown = ({ onClickCustom }) => {
+  const cartItems = useSelector((state) => selectCartItems(state));
   const cartItemQuantity = useSelector((state) =>
     selectCartItemQuantity(state)
   );
+  const history = useHistory();
 
   return (
     <CartDropDownWrapper itemCount={cartItemQuantity}>
@@ -24,7 +26,14 @@ const CartDropDown = () => {
         </CartItemWrapper>
       )}
 
-      <CustomButton>go to checkout</CustomButton>
+      <CustomButton
+        onClick={() => {
+          history.push("/checkout");
+          onClickCustom();
+        }}
+      >
+        go to checkout
+      </CustomButton>
     </CartDropDownWrapper>
   );
 };
