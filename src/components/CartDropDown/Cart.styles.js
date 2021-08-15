@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CartDropDownWrapper = styled.div`
   position: absolute;
   width: 240px;
-  height: 340px;
+  height: ${({ itemCount }) => (itemCount !== 0 ? "340px" : "90px")};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
