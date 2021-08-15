@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { auth } from "../../firebase/firebase.utils";
+import { selectCurrentUser } from "../../redux/users/users.selectors";
 import CartDropDown from "../CartDropDown";
 import CartIcon from "../CartIcon";
 import { HeaderWrapper, MenuIcon, Options } from "./Header.styles";
 
-const Header = ({ currentUser }) => {
+const Header = () => {
   const [isToggleCartDropDown, setIsToggleCartDropDown] = useState(false);
+  const currentUser = useSelector((state) => selectCurrentUser(state));
 
   const handleClickCartIcon = () =>
     setIsToggleCartDropDown(!isToggleCartDropDown);
@@ -38,8 +40,4 @@ const Header = ({ currentUser }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.users.currentUser,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;
