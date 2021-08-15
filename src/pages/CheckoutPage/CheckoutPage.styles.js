@@ -19,10 +19,10 @@ export const CheckoutPageHeader = styled.div`
 
 export const CheckoutPageHeaderBlock = styled.div`
   text-transform: capitalize;
-  width: 23%;
+  width: 22.75%;
 
   &:last-child {
-    width: 8%;
+    width: 9%;
   }
 `;
 

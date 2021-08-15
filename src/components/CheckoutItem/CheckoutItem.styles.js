@@ -16,7 +16,16 @@ export const CheckoutItemWrapper = styled.div`
   }
 
   .quantity {
-    padding-left: 20px;
+    display: flex;
+
+    .arrow {
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .value {
+      margin: 0 10px;
+    }
   }
 
   .remove-button {
