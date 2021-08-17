@@ -1,18 +1,18 @@
 import React from "react";
 import CollectionItem from "../CollectionItem";
-import { CollectionPreviewWrapper } from "./CollectionPreview.styles";
+import { CollectionPreviewWrapper, Item } from "./CollectionPreview.styles";
 
 const CollectionPreview = ({ title, items }) => {
   return (
     <CollectionPreviewWrapper>
       <h2>{title.toUpperCase()}</h2>
-      <div>
+      <Item>
         {items
           .filter((item, idx) => idx < 4)
           .map((item) => (
             <CollectionItem key={item.id} item={item} />
           ))}
-      </div>
+      </Item>
     </CollectionPreviewWrapper>
   );
 };

@@ -11,7 +11,7 @@ export const CollectionPageWrapper = styled.div`
 
   .items {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 40px 6px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 2rem;
   }
 `;

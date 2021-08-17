@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const CollectionItemWrapper = styled.div`
-  width: 22vw;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -13,7 +12,7 @@ export const CollectionItemWrapper = styled.div`
     height: 100%;
     background-image: ${({ imageUrl }) => `url(${imageUrl})`};
     background-size: cover;
-    background-position: cover;
+    background-position: center;
     margin-bottom: 5px;
     border-radius: 2.5px;
     transition: all 0.15s ease-in;
