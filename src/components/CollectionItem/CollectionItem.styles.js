@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CollectionItemWrapper = styled.div`
-  width: 22%;
+  width: 22vw;
   display: flex;
   align-items: center;
   flex-direction: column;
