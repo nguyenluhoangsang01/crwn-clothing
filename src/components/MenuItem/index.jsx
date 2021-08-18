@@ -1,18 +1,18 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { MenuItemWrapper } from "./MenuItem.styles";
+import { Bgc, MenuItemWrapper, Subtitle, Title } from "./MenuItem.styles";
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
   return (
     <MenuItemWrapper
-      imageUrl={imageUrl}
       className={size}
       onClick={() => history.push(`${match.url}${linkUrl}`)}
     >
-      <div className="bgc" />
+      <Bgc imageUrl={imageUrl} />
+
       <div>
-        <h1>{title.toUpperCase()}</h1>
-        <span>SHOP NOW</span>
+        <Title>{title.toUpperCase()}</Title>
+        <Subtitle>SHOP NOW</Subtitle>
       </div>
     </MenuItemWrapper>
   );

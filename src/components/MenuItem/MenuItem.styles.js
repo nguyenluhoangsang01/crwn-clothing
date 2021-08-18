@@ -12,6 +12,13 @@ export const MenuItemWrapper = styled.div`
   overflow: hidden;
   position: relative;
 
+  @media screen and (max-width: 768px) {
+    height: 380px;
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
   &:hover {
     cursor: pointer;
 
@@ -30,14 +37,6 @@ export const MenuItemWrapper = styled.div`
     height: 380px;
   }
 
-  .bgc {
-    width: 100%;
-    height: 100%;
-    background-image: ${({ imageUrl }) => `url(${imageUrl})`};
-    background-size: cover;
-    background-position: center;
-  }
-
   div:last-child {
     height: 90px;
     padding: 0 25px;
@@ -53,17 +52,25 @@ export const MenuItemWrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+`;
 
-  h1 {
-    font-weight: bold;
-    margin: 0;
-    margin-bottom: 6px;
-    font-size: 22px;
-    color: #4a4a4a;
-  }
+export const Bgc = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+  background-size: cover;
+  background-position: center;
+`;
 
-  span {
-    font-weight: lighter;
-    font-size: 16px;
-  }
+export const Title = styled.h2`
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 6px;
+  font-size: 22px;
+  color: #4a4a4a;
+`;
+
+export const Subtitle = styled.span`
+  font-weight: lighter;
+  font-size: 16px;
 `;
