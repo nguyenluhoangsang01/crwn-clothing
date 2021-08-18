@@ -12,7 +12,7 @@ import { setCurrentUser } from "./redux/users/users.actions";
 import { selectCurrentUser } from "./redux/users/users.selectors";
 
 function App() {
-  const currentUser = useSelector((state) => selectCurrentUser(state));
+  const currentUser = useSelector(selectCurrentUser);
 
   const dispatch = useDispatch();
 

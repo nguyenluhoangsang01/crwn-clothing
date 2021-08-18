@@ -4,9 +4,7 @@ import { selectCartItemQuantity } from "../../redux/cart/cart.selectors";
 import { CartIconWrapper, StyledShoppingBag } from "./CartIcon.styles";
 
 const CartIcon = ({ onClickCartIcon }) => {
-  const cartItemQuantity = useSelector((state) =>
-    selectCartItemQuantity(state)
-  );
+  const cartItemQuantity = useSelector(selectCartItemQuantity);
 
   return (
     <CartIconWrapper onClick={onClickCartIcon}>

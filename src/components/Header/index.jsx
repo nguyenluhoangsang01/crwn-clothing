@@ -10,7 +10,7 @@ import { HeaderWrapper, MenuIcon, Options } from "./Header.styles";
 
 const Header = () => {
   const [isToggleCartDropDown, setIsToggleCartDropDown] = useState(false);
-  const currentUser = useSelector((state) => selectCurrentUser(state));
+  const currentUser = useSelector(selectCurrentUser);
 
   const handleClickCartIcon = () =>
     setIsToggleCartDropDown(!isToggleCartDropDown);

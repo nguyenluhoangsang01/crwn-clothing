@@ -10,10 +10,8 @@ import CustomButton from "../CustomButton";
 import { CartDropDownWrapper, CartItemWrapper } from "./Cart.styles";
 
 const CartDropDown = ({ onClickCustom }) => {
-  const cartItems = useSelector((state) => selectCartItems(state));
-  const cartItemQuantity = useSelector((state) =>
-    selectCartItemQuantity(state)
-  );
+  const cartItems = useSelector(selectCartItems);
+  const cartItemQuantity = useSelector(selectCartItemQuantity);
   const history = useHistory();
 
   return (
