@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
 import CustomButton from "../CustomButton";
 import {
@@ -7,7 +7,13 @@ import {
   CollectionItemWrapper,
 } from "./CollectionItem.styles";
 
-const CollectionItem = ({ item, addItem }) => {
+const CollectionItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const addItemDispatch = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <CollectionItemWrapper imageUrl={item.imageUrl}>
       <div className="bgc" />
@@ -20,7 +26,7 @@ const CollectionItem = ({ item, addItem }) => {
       <CustomButton
         inverted
         className="custom-button"
-        onClick={() => addItem(item)}
+        onClick={() => addItemDispatch(item)}
       >
         add to cart
       </CustomButton>
@@ -28,8 +34,4 @@ const CollectionItem = ({ item, addItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;

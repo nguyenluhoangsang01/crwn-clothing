@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { connect, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -11,26 +11,30 @@ import SignInAndSignUpPage from "./pages/SignInAndSignUpPage";
 import { setCurrentUser } from "./redux/users/users.actions";
 import { selectCurrentUser } from "./redux/users/users.selectors";
 
-function App({ setCurrentUser }) {
+function App() {
   const currentUser = useSelector((state) => selectCurrentUser(state));
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
+          dispatch(
+            setCurrentUser({
+              id: snapshot.id,
+              ...snapshot.data(),
+            })
+          );
         });
       } else {
-        setCurrentUser(userAuth);
+        dispatch(setCurrentUser(userAuth));
       }
     });
 
     return () => unsubscribeFromAuth();
-  }, [setCurrentUser]);
+  }, [dispatch]);
 
   return (
     <>
@@ -56,8 +60,4 @@ function App({ setCurrentUser }) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;
