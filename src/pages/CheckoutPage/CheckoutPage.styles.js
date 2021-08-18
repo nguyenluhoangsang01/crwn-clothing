@@ -32,3 +32,10 @@ export const CheckoutPageTotalPrice = styled.div`
   font-size: 35px;
   text-transform: uppercase;
 `;
+
+export const TextWarning = styled.div`
+  text-align: center;
+  color: #f00;
+  margin: 40px 0;
+  opacity: 0.8;
+`;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CheckoutItem from "../../components/CheckoutItem";
+import StripeButton from "../../components/StripeButton";
 import {
   selectCartItems,
   selectCartItemTotalPrice,
@@ -10,6 +11,7 @@ import {
   CheckoutPageHeaderBlock,
   CheckoutPageTotalPrice,
   CheckoutPageWrapper,
+  TextWarning,
 } from "./CheckoutPage.styles";
 
 const CheckoutPage = () => {
@@ -31,6 +33,16 @@ const CheckoutPage = () => {
       ))}
 
       <CheckoutPageTotalPrice>total: ${totalPrice}</CheckoutPageTotalPrice>
+
+      <TextWarning>
+        *Please use the following test credit card for payments*
+        <br />
+        <br />
+        Card number: 4242 4242 4242 4242 - Exp: Any future date - CVC: Any 3
+        digits
+      </TextWarning>
+
+      <StripeButton price={totalPrice} />
     </CheckoutPageWrapper>
   );
 };
