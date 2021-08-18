@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Deployed at [https://crwn-clothing-gamma.vercel.app/](https://crwn-clothing-gamma.vercel.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
