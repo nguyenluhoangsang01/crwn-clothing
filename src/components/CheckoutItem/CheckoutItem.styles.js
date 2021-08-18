@@ -21,6 +21,7 @@ export const CheckoutItemWrapper = styled.div`
     .arrow {
       cursor: pointer;
       font-size: 15px;
+      user-select: none;
     }
 
     .value {
