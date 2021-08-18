@@ -5,6 +5,7 @@ import {
   selectCartItemQuantity,
   selectCartItems,
 } from "../../redux/cart/cart.selectors";
+import { selectCurrentUser } from "../../redux/users/users.selectors";
 import CartItem from "../CartItem";
 import CustomButton from "../CustomButton";
 import { CartDropDownWrapper, CartItemWrapper } from "./Cart.styles";
@@ -12,6 +13,7 @@ import { CartDropDownWrapper, CartItemWrapper } from "./Cart.styles";
 const CartDropDown = ({ onClickCustom }) => {
   const cartItems = useSelector(selectCartItems);
   const cartItemQuantity = useSelector(selectCartItemQuantity);
+  const currentUser = useSelector(selectCurrentUser);
   const history = useHistory();
 
   return (
@@ -26,7 +28,7 @@ const CartDropDown = ({ onClickCustom }) => {
 
       <CustomButton
         onClick={() => {
-          history.push("/checkout");
+          history.push(currentUser ? "/checkout" : "/sign-in");
           onClickCustom();
         }}
       >
