@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -59,6 +60,7 @@ function App() {
           {currentUser && cartItemQuantity && <Redirect to="/checkout" />}
         </Route>
       </Switch>
+      <Footer />
     </>
   );
 }
