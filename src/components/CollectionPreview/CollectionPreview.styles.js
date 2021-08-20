@@ -6,6 +6,7 @@ export const CollectionPreviewWrapper = styled.div`
   h2 {
     font-size: 28px;
     margin-bottom: 25px;
+    cursor: pointer;
   }
 `;
 
