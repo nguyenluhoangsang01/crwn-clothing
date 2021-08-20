@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import CollectionItem from "../../components/CollectionItem";
-import { selectCollections } from "../../redux/shop/selectors";
+import { selectCollectionsForReview } from "../../redux/shop/selectors";
 import { CollectionPageWrapper } from "./CollectionPage.styles";
 
 const CollectionPage = () => {
@@ -10,12 +10,12 @@ const CollectionPage = () => {
     params: { categoryId },
   } = useRouteMatch();
 
-  const collections = useSelector(selectCollections);
+  const collections = useSelector(selectCollectionsForReview);
 
   return (
     <CollectionPageWrapper>
       {collections
-        .filter(
+        ?.filter(
           (collection) =>
             collection.routeName.toUpperCase() === categoryId.toUpperCase()
         )
