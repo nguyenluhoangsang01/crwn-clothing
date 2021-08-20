@@ -3,11 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, useRouteMatch } from "react-router-dom";
 import CollectionOverview from "../../components/CollectionOverview";
 import WithSpinner from "../../components/Spinner";
-import {
-  convertCollectionsSnapshotToMap,
-  firestore,
-} from "../../firebase/firebase.utils";
-import { updateCollections } from "../../redux/shop/actions";
+import { fetchCollectionsStartAsync } from "../../redux/shop/actions";
 import CollectionPage from "../CollectionPage";
 
 const CollectionOverviewWithSpinner = WithSpinner(CollectionOverview);
@@ -20,17 +16,12 @@ const ShopPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const collectionRef = firestore.collection("collections");
+    const collectionsStartAsync = fetchCollectionsStartAsync(
+      dispatch,
+      setIsLoading
+    );
 
-    const unsubscribeFromSnapshot = collectionRef.get().then((snapshot) => {
-      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-
-      dispatch(updateCollections(collectionsMap));
-
-      setIsLoading(false);
-    });
-
-    return () => unsubscribeFromSnapshot();
+    return collectionsStartAsync;
   }, [dispatch]);
 
   return (
