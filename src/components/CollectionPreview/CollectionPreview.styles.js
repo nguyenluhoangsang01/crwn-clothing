@@ -5,7 +5,7 @@ export const CollectionPreviewWrapper = styled.div`
 `;
 
 export const Title = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
 
