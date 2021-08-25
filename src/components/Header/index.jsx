@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
-import { auth } from "../../firebase/firebase.utils";
+import { signOutStart } from "../../redux/users/users.actions";
 import { selectCurrentUser } from "../../redux/users/users.selectors";
 import CartDropDown from "../CartDropDown";
 import CartIcon from "../CartIcon";
@@ -12,6 +12,8 @@ const Header = () => {
   const [isToggleCartDropDown, setIsToggleCartDropDown] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const handleClickCartIcon = () =>
     setIsToggleCartDropDown(!isToggleCartDropDown);
@@ -33,7 +35,7 @@ const Header = () => {
       <Options>
         <Link to="/shop">SHOP</Link>
         {currentUser ? (
-          <span onClick={() => auth.signOut()}>SIGN OUT</span>
+          <span onClick={() => dispatch(signOutStart())}>SIGN OUT</span>
         ) : (
           <Link to="/sign-in">SIGN IN</Link>
         )}

@@ -30,7 +30,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         createdAt,
       });
     } catch (error) {
-      console.log("Error creating user", error.message);
+      console.log("Error creating user", error);
     }
   }
 
@@ -77,5 +77,14 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
 
 export default firebase;
