@@ -3,7 +3,7 @@ import logger from "redux-logger";
 import { persistStore } from "redux-persist";
 import rootReducer from "./rootReducer";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "../rootSaga";
+import rootSaga from "./rootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
