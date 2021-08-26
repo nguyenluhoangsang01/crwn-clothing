@@ -10,13 +10,19 @@ import {
   signInSuccess,
   signOutFailure,
   signOutSuccess,
+  signUpFailure,
+  signUpSuccess,
 } from "./users.actions";
 import { userActionTypes } from "./users.types";
 
 // TODO: GET SNAPSHOT
-function* getSnapshotFromAuth(userAuth) {
+function* getSnapshotFromAuth(userAuth, additionalData) {
   try {
-    const userRef = yield call(createUserProfileDocument, userAuth);
+    const userRef = yield call(
+      createUserProfileDocument,
+      userAuth,
+      additionalData
+    );
     const userSnapshot = yield userRef.get();
 
     yield put(
@@ -86,6 +92,32 @@ function* onSignOutStart() {
   yield takeLatest(userActionTypes.SIGN_OUT_START, signOut);
 }
 
+// TODO: SIGN UP
+function* signUp({ payload: { email, password, displayName } }) {
+  try {
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+
+    yield put(signUpSuccess({ user, additionalData: { displayName } }));
+  } catch (error) {
+    yield put(signUpFailure(error));
+  }
+}
+function* onSignUpStart() {
+  yield takeLatest(userActionTypes.SIGN_UP_START, signUp);
+}
+
+function* signInAfterSignUp({
+  payload: {
+    user,
+    additionalData: { displayName },
+  },
+}) {
+  yield getSnapshotFromAuth(user, displayName);
+}
+function* onSignUpSuccess() {
+  yield takeLatest(userActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
+}
+
 //* Sagas
 export default function* userSagas() {
   yield all([
@@ -93,5 +125,7 @@ export default function* userSagas() {
     call(onEmailSignInStart),
     call(onCheckUserSession),
     call(onSignOutStart),
+    call(onSignUpStart),
+    call(onSignUpSuccess),
   ]);
 }
