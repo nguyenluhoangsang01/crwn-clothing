@@ -6,30 +6,33 @@ import FormInput from "../FormInput";
 import { SignUpWrapper } from "./SignUp.styles";
 
 const SignUp = () => {
-  const [values, setValues] = useState({
+  const [credentials, setCredentials] = useState({
     displayName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+
+  const { displayName, email, password, confirmPassword } = credentials;
+
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (values.password !== values.confirmPassword) {
+    if (password !== confirmPassword) {
       alert("Password and confirm password do not match.");
       return;
     }
 
-    dispatch(signUpStart(values));
+    dispatch(signUpStart(credentials));
   };
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
 
-    setValues({
-      ...values,
+    setCredentials({
+      ...credentials,
       [name]: value,
     });
   };
@@ -43,7 +46,7 @@ const SignUp = () => {
         <FormInput
           type="text"
           name="displayName"
-          value={values.displayName}
+          value={displayName}
           required
           handleChange={handleChange}
           label="Display Name"
@@ -51,7 +54,7 @@ const SignUp = () => {
         <FormInput
           type="email"
           name="email"
-          value={values.email}
+          value={email}
           required
           handleChange={handleChange}
           label="Email"
@@ -59,7 +62,7 @@ const SignUp = () => {
         <FormInput
           type="password"
           name="password"
-          value={values.password}
+          value={password}
           required
           handleChange={handleChange}
           label="Password"
@@ -67,7 +70,7 @@ const SignUp = () => {
         <FormInput
           type="Password"
           name="confirmPassword"
-          value={values.confirmPassword}
+          value={confirmPassword}
           required
           handleChange={handleChange}
           label="Confirm Password"

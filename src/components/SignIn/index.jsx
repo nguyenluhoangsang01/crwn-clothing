@@ -9,7 +9,7 @@ import FormInput from "../FormInput";
 import { SignInWrapper } from "./SignIn.styles";
 
 const SignIn = () => {
-  const [values, setValues] = useState({
+  const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
@@ -19,9 +19,9 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(emailSignInStart(values));
+    dispatch(emailSignInStart(credentials));
 
-    setValues({
+    setCredentials({
       email: "",
       password: "",
     });
@@ -30,8 +30,8 @@ const SignIn = () => {
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
 
-    setValues({
-      ...values,
+    setCredentials({
+      ...credentials,
       [name]: value,
     });
   };
@@ -45,7 +45,7 @@ const SignIn = () => {
         <FormInput
           type="email"
           name="email"
-          value={values.email}
+          value={credentials.email}
           required
           handleChange={handleChange}
           label="Email"
@@ -54,7 +54,7 @@ const SignIn = () => {
         <FormInput
           type="password"
           name="password"
-          value={values.password}
+          value={credentials.password}
           required
           handleChange={handleChange}
           label="Password"
