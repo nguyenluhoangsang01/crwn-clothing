@@ -1,27 +1,21 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Context } from "../../context/cart";
-import {
-  selectCartItemQuantity,
-  selectCartItems,
-} from "../../redux/cart/cart.selectors";
+import { CartContext } from "../../providers/carts/provider";
 import { selectCurrentUser } from "../../redux/users/users.selectors";
 import CartItem from "../CartItem";
 import CustomButton from "../CustomButton";
 import { CartDropDownWrapper, CartItemWrapper } from "./Cart.styles";
 
 const CartDropDown = () => {
-  const cartItems = useSelector(selectCartItems);
-  const cartItemQuantity = useSelector(selectCartItemQuantity);
   const currentUser = useSelector(selectCurrentUser);
   const history = useHistory();
 
-  const [hidden, setHidden] = useContext(Context);
+  const { toggleHidden, cartItems, cartItemCount } = useContext(CartContext);
 
   return (
-    <CartDropDownWrapper itemCount={cartItemQuantity}>
-      {cartItemQuantity !== 0 && (
+    <CartDropDownWrapper itemCount={cartItemCount}>
+      {cartItemCount !== 0 && (
         <CartItemWrapper>
           {cartItems.map((cartItem, index) => (
             <CartItem key={cartItem.id} item={cartItem} />
@@ -32,7 +26,7 @@ const CartDropDown = () => {
       <CustomButton
         onClick={() => {
           history.push(currentUser ? "/checkout" : "/sign-in");
-          setHidden(!hidden);
+          toggleHidden();
         }}
       >
         go to checkout

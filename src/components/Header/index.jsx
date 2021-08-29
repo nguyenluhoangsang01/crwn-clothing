@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
-import { Context } from "../../context/cart";
+import { CartContext } from "../../providers/carts/provider";
 import { signOutStart } from "../../redux/users/users.actions";
 import { selectCurrentUser } from "../../redux/users/users.selectors";
 import CartDropDown from "../CartDropDown";
@@ -15,7 +15,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const [hidden] = useContext(Context);
+  const { hidden } = useContext(CartContext);
 
   useEffect(() => {
     if (history.location.pathname === "/checkout") {
@@ -42,7 +42,7 @@ const Header = () => {
         <CartIcon />
       </Options>
 
-      {hidden && <CartDropDown />}
+      {!hidden && <CartDropDown />}
     </HeaderWrapper>
   );
 };

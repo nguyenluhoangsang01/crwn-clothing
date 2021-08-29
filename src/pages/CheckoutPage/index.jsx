@@ -1,11 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useContext } from "react";
 import CheckoutItem from "../../components/CheckoutItem";
 import StripeButton from "../../components/StripeButton";
-import {
-  selectCartItems,
-  selectCartItemTotalPrice,
-} from "../../redux/cart/cart.selectors";
+import { CartContext } from "../../providers/carts/provider";
 import {
   CheckoutPageHeader,
   CheckoutPageHeaderBlock,
@@ -15,8 +11,7 @@ import {
 } from "./CheckoutPage.styles";
 
 const CheckoutPage = () => {
-  const cartItems = useSelector(selectCartItems);
-  const totalPrice = useSelector(selectCartItemTotalPrice);
+  const { cartItems, totalPrice } = useContext(CartContext);
 
   return (
     <CheckoutPageWrapper>
@@ -28,8 +23,8 @@ const CheckoutPage = () => {
         <CheckoutPageHeaderBlock>Remove</CheckoutPageHeaderBlock>
       </CheckoutPageHeader>
 
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+      {cartItems.map((item) => (
+        <CheckoutItem key={item.id} item={item} />
       ))}
 
       <CheckoutPageTotalPrice>total: ${totalPrice}</CheckoutPageTotalPrice>

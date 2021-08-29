@@ -1,18 +1,14 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
-import { Context } from "../../context/cart";
-import { selectCartItemQuantity } from "../../redux/cart/cart.selectors";
+import { CartContext } from "../../providers/carts/provider";
 import { CartIconWrapper, StyledShoppingBag } from "./CartIcon.styles";
 
 const CartIcon = () => {
-  const cartItemQuantity = useSelector(selectCartItemQuantity);
-
-  const [hidden, setHidden] = useContext(Context);
+  const { toggleHidden, cartItemCount } = useContext(CartContext);
 
   return (
-    <CartIconWrapper onClick={() => setHidden(!hidden)}>
+    <CartIconWrapper onClick={toggleHidden}>
       <StyledShoppingBag />
-      <span>{cartItemQuantity}</span>
+      <span>{cartItemCount}</span>
     </CartIconWrapper>
   );
 };

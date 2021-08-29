@@ -1,6 +1,5 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "../../redux/cart/cart.actions";
+import React, { useContext } from "react";
+import { CartContext } from "../../providers/carts/provider";
 import CustomButton from "../CustomButton";
 import {
   CollectionFooter,
@@ -8,11 +7,7 @@ import {
 } from "./CollectionItem.styles";
 
 const CollectionItem = ({ item }) => {
-  const dispatch = useDispatch();
-
-  const addItemDispatch = (item) => {
-    dispatch(addItem(item));
-  };
+  const { addItem } = useContext(CartContext);
 
   return (
     <CollectionItemWrapper imageUrl={item.imageUrl}>
@@ -26,7 +21,7 @@ const CollectionItem = ({ item }) => {
       <CustomButton
         inverted
         className="custom-button"
-        onClick={() => addItemDispatch(item)}
+        onClick={() => addItem(item)}
       >
         add to cart
       </CustomButton>
