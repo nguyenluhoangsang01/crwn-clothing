@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { Context } from "../../context/cart";
 import { signOutStart } from "../../redux/users/users.actions";
 import { selectCurrentUser } from "../../redux/users/users.selectors";
 import CartDropDown from "../CartDropDown";
@@ -9,14 +10,12 @@ import CartIcon from "../CartIcon";
 import { HeaderWrapper, MenuIcon, Options } from "./Header.styles";
 
 const Header = () => {
-  const [isToggleCartDropDown, setIsToggleCartDropDown] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
   const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const handleClickCartIcon = () =>
-    setIsToggleCartDropDown(!isToggleCartDropDown);
+  const [hidden] = useContext(Context);
 
   useEffect(() => {
     if (history.location.pathname === "/checkout") {
@@ -40,12 +39,10 @@ const Header = () => {
           <Link to="/sign-in">SIGN IN</Link>
         )}
 
-        <CartIcon onClickCartIcon={handleClickCartIcon} />
+        <CartIcon />
       </Options>
 
-      {isToggleCartDropDown && (
-        <CartDropDown onClickCustom={handleClickCartIcon} />
-      )}
+      {hidden && <CartDropDown />}
     </HeaderWrapper>
   );
 };

@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import CartProvider from "./context/cart";
 import CheckoutPage from "./pages/CheckoutPage";
 import Homepage from "./pages/Homepage";
 import ShopPage from "./pages/ShopPage";
@@ -23,7 +24,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <CartProvider>
       <Header />
       <Switch>
         <Route path="/" exact>
@@ -44,7 +45,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 

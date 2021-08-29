@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Context } from "../../context/cart";
 import {
   selectCartItemQuantity,
   selectCartItems,
@@ -10,11 +11,13 @@ import CartItem from "../CartItem";
 import CustomButton from "../CustomButton";
 import { CartDropDownWrapper, CartItemWrapper } from "./Cart.styles";
 
-const CartDropDown = ({ onClickCustom }) => {
+const CartDropDown = () => {
   const cartItems = useSelector(selectCartItems);
   const cartItemQuantity = useSelector(selectCartItemQuantity);
   const currentUser = useSelector(selectCurrentUser);
   const history = useHistory();
+
+  const [hidden, setHidden] = useContext(Context);
 
   return (
     <CartDropDownWrapper itemCount={cartItemQuantity}>
@@ -29,7 +32,7 @@ const CartDropDown = ({ onClickCustom }) => {
       <CustomButton
         onClick={() => {
           history.push(currentUser ? "/checkout" : "/sign-in");
-          onClickCustom();
+          setHidden(!hidden);
         }}
       >
         go to checkout
