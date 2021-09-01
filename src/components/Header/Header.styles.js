@@ -19,6 +19,12 @@ export const HeaderWrapper = styled.div`
     height: 100%;
     padding: 25px;
   }
+
+  @media screen and (max-width: 800px) {
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const Options = styled.div`
@@ -28,48 +34,9 @@ export const Options = styled.div`
 
   span,
   a {
-    padding: 10px 15px;
+    padding: 10px;
     display: flex;
     align-items: center;
     cursor: pointer;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const MenuIcon = styled.div`
-  display: none;
-  padding: 0;
-  width: 30px;
-  height: 3px;
-  border-radius: 30px;
-  background-color: grey;
-  position: relative;
-  cursor: pointer;
-
-  &:before {
-    content: "";
-    top: -10px;
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    background-color: inherit;
-    border-radius: inherit;
-  }
-
-  &:after {
-    content: "";
-    bottom: -10px;
-    position: absolute;
-    width: inherit;
-    height: inherit;
-    background-color: inherit;
-    border-radius: inherit;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: block;
   }
 `;

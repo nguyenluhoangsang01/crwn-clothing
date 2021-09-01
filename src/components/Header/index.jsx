@@ -7,7 +7,7 @@ import { signOutStart } from "../../redux/users/users.actions";
 import { selectCurrentUser } from "../../redux/users/users.selectors";
 import CartDropDown from "../CartDropDown";
 import CartIcon from "../CartIcon";
-import { HeaderWrapper, MenuIcon, Options } from "./Header.styles";
+import { HeaderWrapper, Options } from "./Header.styles";
 
 const Header = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -28,8 +28,6 @@ const Header = () => {
       <Link to="/" className="logo">
         <Logo />
       </Link>
-
-      <MenuIcon />
 
       <Options>
         <Link to="/shop">SHOP</Link>

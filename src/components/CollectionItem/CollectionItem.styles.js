@@ -6,6 +6,7 @@ export const CollectionItemWrapper = styled.div`
   flex-direction: column;
   height: 350px;
   position: relative;
+  padding: 0 10px;
 
   .bgc {
     width: 100%;

@@ -10,13 +10,11 @@ export const MenuItemWrapper = styled.div`
   height: 240px;
   margin: 0 7.5px 15px;
   overflow: hidden;
+  text-align: center;
   position: relative;
 
-  @media screen and (max-width: 768px) {
-    height: 380px;
-    display: block;
-    width: 100%;
-    margin-bottom: 30px;
+  @media screen and (max-width: 800px) {
+    height: 200px !important;
   }
 
   &:hover {
@@ -51,10 +49,6 @@ export const MenuItemWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    @media screen and (max-width: 480px) {
-      width: 70%;
-    }
   }
 `;
 
